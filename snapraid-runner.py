@@ -106,6 +106,7 @@ def send_email(success):
         server = smtplib.SMTP_SSL(**smtp)
     else:
         server = smtplib.SMTP(**smtp)
+        server.ehlo()
         if config["smtp"]["tls"] & server.has_extn('STARTTLS'):
             server.starttls()
     if config["smtp"]["user"]:
